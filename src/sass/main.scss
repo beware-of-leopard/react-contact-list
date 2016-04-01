@@ -1,1 +1,45 @@
 /* CSS Entry Point */
+
+
+*{
+
+	margin:0;
+	padding:0;
+	box-sizing:border-box;
+
+}
+
+.app{
+	width: 500px;
+	margin: auto;
+	border: 1px solid black;
+}
+
+.contact-list {
+	h3{
+		background-color: #81BC39;
+		color: white;
+		padding: 30px;
+		font-size: 2em;
+	}
+	
+	div{
+		display: flex;
+		justify-content: space-around;
+		border: 1px solid black;
+		padding: 15px;
+		line-height: 60px;
+		img{
+			// width: 30px;
+			border-radius: 100%;
+		}
+	}
+
+}
+
+.single-contact{
+
+	border: 1px solid black;
+	padding: 15px;
+
+}

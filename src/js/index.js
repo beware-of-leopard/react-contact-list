@@ -9,10 +9,11 @@ import ContactList from './contact-list';
 export {displayContactList, displaySingleContact};
 
 
+
 function displayContactList(){
 
 	ReactDOM.render(
-	  <ContactList onSelect={displaySingleContact}/>
+	  <ContactList contactsArray={contacts}/>
 	  , document.querySelector('.app')
 	);
 
@@ -22,13 +23,10 @@ function displayContactList(){
 function displaySingleContact(contact){
 
 	ReactDOM.render(
-	  <Contact onSelect={displayContactList}/>
+	  <Contact contactToDisplay={contact}/>
 	  , document.querySelector('.app')
 	);
-	
 }
-		
+	
 
 displayContactList();
-
-// setTimeout(displaySingleContact, 5000);
