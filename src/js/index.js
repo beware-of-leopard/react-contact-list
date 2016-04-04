@@ -13,7 +13,7 @@ export {displayContactList, displaySingleContact};
 function displayContactList(){
 
 	ReactDOM.render(
-	  <ContactList contactsArray={contacts}/>
+	  <ContactList contactsArray={contacts} onSelect={displaySingleContact}/>
 	  , document.querySelector('.app')
 	);
 
@@ -23,7 +23,7 @@ function displayContactList(){
 function displaySingleContact(contact){
 
 	ReactDOM.render(
-	  <Contact contactToDisplay={contact}/>
+	  <Contact contactToDisplay={contact} onSelect={displayContactList}/>
 	  , document.querySelector('.app')
 	);
 }
