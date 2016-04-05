@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import SSF from 'react-simple-serial-form';
 import Dropzone from 'react-dropzone';
+import contacts from './contacts';
 
 export default class EditContact extends Component{
 
@@ -21,8 +22,11 @@ export default class EditContact extends Component{
 		}
 	}
 
-	handler(contact){
-		this.props.editAndAdd(contact);
+	handler(updatedContact){
+
+
+		this.props.editAndAdd(this.props.contact, updatedContact);
+
 
 	}
 

@@ -51,9 +51,16 @@ function addContactAndRenderList(contact){
 
 }
 
-function editContactAndRenderList(contact){
+function editContactAndRenderList(contact, updatedContact){
 
-	contacts.push(contact);
+	/////
+	var indexOfOriginalContact = contacts.indexOf(contact);
+
+	contacts.splice(indexOfOriginalContact, 1);
+	
+	console.log(contact);
+	console.log(updatedContact);
+	contacts.push(updatedContact);
 	displayContactList();
 
 }

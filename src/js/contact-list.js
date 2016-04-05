@@ -25,7 +25,6 @@ clickHandler(contact) {
 }
 
 editClickHandler(contact){
-	console.log(contact);
 	this.props.editContact(contact);
 	}
 
