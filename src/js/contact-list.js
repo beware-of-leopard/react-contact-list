@@ -11,7 +11,8 @@ export default class ContactList extends React.Component {
 static propTypes = {
 
 	contactsArray: PropTypes.array.isRequired,
-	onSelect: PropTypes.func.isRequired
+	onSelect: PropTypes.func.isRequired,
+	addNew: PropTypes.func.isRequired
 
 }
 
@@ -27,6 +28,7 @@ clickHandler(contact) {
 		    	<div className="contact-list">
 		    		<h3>Contact List</h3>
 		    		{this.props.contactsArray.map(contact => <div onClick={::this.clickHandler.bind(this, contact)} key={ contact.name }>{ <img src={contact.img} alt={contact.name} /> }{ contact.name }</div>)}
+		    		<button onClick={this.props.addNew}>Add New Contact</button>
 		       	</div>
 		    );
 	}

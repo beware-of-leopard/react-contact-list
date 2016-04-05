@@ -32,6 +32,7 @@
   "dependencies": {
     "node-font-awesome": "^1.0.2",
     "react": "^0.14.7",
-    "react-dom": "^0.14.7"
+    "react-dom": "^0.14.7",
+    "react-simple-serial-form": "^1.0.0"
   }
 }

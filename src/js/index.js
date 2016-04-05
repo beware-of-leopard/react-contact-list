@@ -5,6 +5,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Contact from './contact';
 import ContactList from './contact-list';
+import AddContact from './add-contact';
 
 export {displayContactList, displaySingleContact};
 
@@ -13,7 +14,7 @@ export {displayContactList, displaySingleContact};
 function displayContactList(){
 
 	ReactDOM.render(
-	  <ContactList contactsArray={contacts} onSelect={displaySingleContact}/>
+	  <ContactList contactsArray={contacts} onSelect={displaySingleContact} addNew={displayAddContactView}/>
 	  , document.querySelector('.app')
 	);
 
@@ -27,6 +28,19 @@ function displaySingleContact(contact){
 	  , document.querySelector('.app')
 	);
 }
+
+function displayAddContactView(){
+	ReactDOM.render(
+		<AddContact addTo={addContactAndRenderList} returnTo={displayContactList}/>,
+		document.querySelector('.app')
+		)
+}
 	
+function addContactAndRenderList(contact){
+
+	contacts.push(contact);
+	displayContactList();
+
+}
 
 displayContactList();

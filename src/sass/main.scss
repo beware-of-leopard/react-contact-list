@@ -37,6 +37,23 @@
 			margin-right: 20px;
 		}
 	}
+	button{
+		padding: 5px 10px;
+		display: block;
+		width: 100%;
+		font-size: 1.5em;
+		height: 80px;
+		line-height: 40px;
+		background-color: #81BC39;
+		color: white;
+		border: none;
+		cursor: pointer;
+		&:hover{
+			color: black;
+			border: 2px solid black;
+		}
+	
+	}
 
 }
 
@@ -69,3 +86,63 @@
 			left: 5px;
 		}
 	}
+
+
+
+.add-contact{
+
+	.header{
+
+		background-color: #81BC39;
+		color: white;
+		text-align: center;
+		padding: 40px;
+		position: relative;
+
+		button{
+			position: absolute;
+			top: 5px;
+			left: 5px;
+			padding: 5px 10px;
+			background: none;
+			border: none;
+			cursor: pointer;
+			i{
+				margin-right: 10px;
+			}
+		}
+
+	}
+
+	.form{
+
+		div{
+			padding: 15px;
+			font-size: 1.5em;
+		}
+
+		button{
+			padding: 5px 10px;
+			display: block;
+			width: 100%;
+			font-size: 1.5em;
+			height: 80px;
+			line-height: 40px;
+			background-color: #81BC39;
+			color: white;
+			border: none;
+			margin-top: 30px;
+			cursor: pointer;
+			&:hover{
+				color: black;
+				border: 2px solid black;
+			}
+		}
+
+	}
+
+}
+
+
+
+
