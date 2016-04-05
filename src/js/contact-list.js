@@ -2,6 +2,7 @@ import contacts from './contacts';
 import React, {Component, PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import Contact from './contact';
+import EditContact from './edit-contact';
 import ContactName from './contact-name';
 // import {displayContactList, displaySingleContact} from './index';
 
@@ -23,12 +24,26 @@ clickHandler(contact) {
 
 }
 
+editClickHandler(contact){
+	console.log(contact);
+	this.props.editContact(contact);
+	}
+
+
 	render() {
 		    return (
 		    	<div className="contact-list">
 		    		<h3>Contact List</h3>
-		    		{this.props.contactsArray.map(contact => <div onClick={::this.clickHandler.bind(this, contact)} key={ contact.name }>{ <img src={contact.img} alt={contact.name} /> }{ contact.name }</div>)}
-		    		<button onClick={this.props.addNew}>Add New Contact</button>
+		    		{this.props.contactsArray.map(
+		    			contact => 
+		    			<div>
+			    			<div onClick={::this.clickHandler.bind(this, contact)} key={ contact.name }>
+			    				{ <img src={contact.img} alt={contact.name} /> }<h2>{ contact.name }</h2>
+			    			</div>
+		    				<button className="edit-button" onClick={this.editClickHandler.bind(this, contact)}>Edit</button>
+		    			</div>)}
+		    			
+		    		<button onClick={this.props.addNew} className="add">Add New Contact</button>
 		       	</div>
 		    );
 	}

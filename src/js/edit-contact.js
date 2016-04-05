@@ -2,25 +2,27 @@ import React, {Component, PropTypes} from 'react';
 import SSF from 'react-simple-serial-form';
 import Dropzone from 'react-dropzone';
 
-export default class AddContact extends Component{
+export default class EditContact extends Component{
 
 	static propTypes = {
 
-		addTo: PropTypes.func.isRequired,
-		returnTo: PropTypes.func.isRequired
+		editAndAdd: PropTypes.func.isRequired,
+		returnTo: PropTypes.func.isRequired,
+
+		contact: PropTypes.object.isRequired
 
 	}
 
-	constructor(){
+	constructor(props){
 
-		super();
+		super(props);
 		this.state = {
-			preview: 'http://fillmurray.com/50/50'
+			preview: this.props.contact.img
 		}
 	}
 
 	handler(contact){
-		this.props.addTo(contact);
+		this.props.editAndAdd(contact);
 
 	}
 
@@ -32,9 +34,6 @@ export default class AddContact extends Component{
 			preview: file.preview
 
 		});
-
-
-
 	}
 
 	render(){
@@ -47,20 +46,18 @@ export default class AddContact extends Component{
 				</div>
 				<SSF onData={::this.handler} className="form">
 					<div>
-						<label>Name: <input type="text" name="name"></input></label>
+						<label>Name: <input type="text" name="name" placeholder={this.props.contact.name}></input></label>
 					</div>
 					<div>
-						<label>Email: <input type="email" name="email"></input></label>
+						<label>Email: <input type="email" name="email" placeholder={this.props.contact.email}></input></label>
 					</div>
 					<div>
-						<label>Phone: <input type="tel" name="phone"></input></label>
+						<label>Phone: <input type="tel" name="phone" placeholder={this.props.contact.phone}></input></label>
 					</div>
 					<div>
-						<label>Image URL: <input type="hidden" name="img" value={this.state.preview}></input></label>
+						<label>Location: <input type="text" name="location" placeholder={this.props.contact.location}></input></label>
 					</div>
-					<div>
-						<label>Location: <input type="text" name="location"></input></label>
-					</div>
+					<input type="hidden" name="img" value={this.state.preview}></input>
 					<h3>Drag and drop image below:</h3>
 					<Dropzone onDrop={::this.dropHandler}>
 						<img src={this.state.preview} />
