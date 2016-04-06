@@ -35,7 +35,7 @@ editClickHandler(contact){
 		    		<h3>Contact List</h3>
 		    		{this.props.contactsArray.map(
 		    			contact => 
-		    			<div>
+		    			<div className="contact-container">
 			    			<div onClick={::this.clickHandler.bind(this, contact)} key={ contact.name }>
 			    				{ <img src={contact.img} alt={contact.name} /> }<h2>{ contact.name }</h2>
 			    			</div>

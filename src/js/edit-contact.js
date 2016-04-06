@@ -32,7 +32,6 @@ export default class EditContact extends Component{
 
 	dropHandler( [ file ]){
 
-		// console.log(file);
 		this.setState({
 
 			preview: file.preview
@@ -45,7 +44,7 @@ export default class EditContact extends Component{
 		return(
 			<div className="add-contact">
 				<div className="header">
-					<h1>Add new contact below:</h1>
+					<h1>Edit contact below:</h1>
 					<button onClick={this.props.returnTo}><i className="fa fa-arrow-left"></i>RETURN</button>
 				</div>
 				<SSF onData={::this.handler} className="form">
@@ -62,11 +61,11 @@ export default class EditContact extends Component{
 						<label>Location: <input type="text" name="location" placeholder={this.props.contact.location}></input></label>
 					</div>
 					<input type="hidden" name="img" value={this.state.preview}></input>
-					<h3>Drag and drop image below:</h3>
+					<h3>Drag and drop new image below:</h3>
 					<Dropzone onDrop={::this.dropHandler}>
-						<img src={this.state.preview} />
+						<img src={this.state.preview} height="50" width="50"/>
 					</Dropzone>
-					<button className="add">Add Contact</button>
+					<button className="add">Update Contact</button>
 				</SSF>
 			</div>
 

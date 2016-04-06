@@ -56,11 +56,9 @@ export default class AddContact extends Component{
 						<label>Phone: <input type="tel" name="phone"></input></label>
 					</div>
 					<div>
-						<label>Image URL: <input type="hidden" name="img" value={this.state.preview}></input></label>
-					</div>
-					<div>
 						<label>Location: <input type="text" name="location"></input></label>
 					</div>
+					<input type="hidden" name="img" value={this.state.preview}></input>
 					<h3>Drag and drop image below:</h3>
 					<Dropzone onDrop={::this.dropHandler}>
 						<img src={this.state.preview} />
