@@ -18,8 +18,6 @@ static propTypes = {
 }
 
 clickHandler(contact) {
-
-    // displaySingleContact(contact);
     this.props.onSelect(contact);
 
 }
