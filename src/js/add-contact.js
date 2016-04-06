@@ -20,6 +20,7 @@ export default class AddContact extends Component{
 	}
 
 	handler(contact){
+		console.log(this);
 		this.props.addTo(contact);
 
 	}

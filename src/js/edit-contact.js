@@ -31,7 +31,7 @@ export default class EditContact extends Component{
 	}
 
 	dropHandler( [ file ]){
-
+console.log(this);
 		this.setState({
 
 			preview: file.preview
