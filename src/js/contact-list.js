@@ -22,15 +22,15 @@ clickHandler(currentContact) {
     let contact = currentContact;
     // return contact;
 
-    hashHistory.push('/contact');
+    hashHistory.push(`/contact/${currentContact.name}`);
 
 }
 
-editClickHandler(contact){
+editClickHandler(currentContact){
 	// this.props.editContact(contact);
 
 
-	hashHistory.push('/edit-contact');
+	hashHistory.push(`/edit-contact/${currentContact.name}`);
 
 }
 

@@ -3,11 +3,13 @@
 import contacts from './contacts';
 import React from 'react';
 import { render } from 'react-dom';
-import { Router, Route, hashHistory } from 'react-router';
+import { Router, Route, hashHistory, IndexRoute } from 'react-router';
 import Contact from './contact';
 import ContactList from './contact-list';
 import AddContact from './add-contact';
 import EditContact from './edit-contact';
+import Main from './main';
+import About from './about';
 
 // export {displayContactList, displaySingleContact};
 
@@ -15,11 +17,13 @@ import EditContact from './edit-contact';
 render((
 
 	<Router history={hashHistory}>
-
-		<Route component={ContactList} path="/"></Route>
-		<Route component={Contact} path="/contact"></Route>
-		<Route component={AddContact} path="/add-contact"></Route>
-		<Route component={EditContact} path="/edit-contact"></Route>
+		<Route component={Main} path="/">
+			<IndexRoute component={ContactList}></IndexRoute>
+			<Route component={Contact} path="/contact/:name"></Route>
+			<Route component={AddContact} path="/add-contact"></Route>
+			<Route component={EditContact} path="/edit-contact/:name"></Route>
+		</Route>
+		<Route component={About} path="/about"></Route>
 
 	</Router>
 

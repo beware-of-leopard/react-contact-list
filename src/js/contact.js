@@ -18,23 +18,34 @@ export default class Contact extends React.Component {
 
 // }
 
+
+///this.props.params.name === value set in link
+
+
+
+////find the contact in the contacts array whose name value matches the one in params
+
+
 clickHandler() {
     hashHistory.push('/');
   }
 
-  
+
 
 	render() {
+
+			let contact = contacts.find(user => user.name === this.props.params.name);
+
 		    return (
 			       <div className="single-contact">
 			       		<div className="header">
 				       		<div className="back-button" onClick={::this.clickHandler}><i className="fa fa-arrow-left"></i>RETURN</div>
-				       		<img src={contacts[0].img} />
+				       		<img src={contact.img} />
 			       		</div>
-			       		<div><i className="fa fa-user"></i>{contacts[0].name}</div>
-			       		<div><i className="fa fa-envelope"></i>{contacts[0].email}</div>
-			       		<div><i className="fa fa-mobile"></i>{contacts[0].phone}</div>
-			       		<div><i className="fa fa-globe"></i>{contacts[0].location}</div>
+			       		<div><i className="fa fa-user"></i>{contact.name}</div>
+			       		<div><i className="fa fa-envelope"></i>{contact.email}</div>
+			       		<div><i className="fa fa-mobile"></i>{contact.phone}</div>
+			       		<div><i className="fa fa-globe"></i>{contact.location}</div>
 			       </div>
 		    );
 		  }

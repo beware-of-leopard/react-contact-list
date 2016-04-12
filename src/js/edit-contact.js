@@ -20,11 +20,17 @@ export default class EditContact extends Component{
 		super(props);
 		this.state = {
 			// preview: this.props.contact.img
-			preview: ""
+			preview: "http://fillmurray.com/50/50"
 		}
 	}
 
 	handler(updatedContact){
+
+		let contactToRemove = contacts.indexOf(contacts.find(user => user.name === this.props.params.name));
+
+		contacts.splice(contactToRemove, 1);
+
+		contacts.push(updatedContact);
 
 		hashHistory.push('/');
 		// this.props.editAndAdd(this.props.contact, updatedContact);
@@ -43,6 +49,8 @@ export default class EditContact extends Component{
 
 	render(){
 
+		let contact = contacts.find(user => user.name === this.props.params.name);
+
 		return(
 			<div className="add-contact">
 				<div className="header">
@@ -51,16 +59,16 @@ export default class EditContact extends Component{
 				</div>
 				<SSF onData={::this.handler} className="form">
 					<div>
-						<label>Name: <input type="text" name="name" placeholder={contacts[0].name}></input></label>
+						<label>Name: <input type="text" name="name" placeholder={contact.name}></input></label>
 					</div>
 					<div>
-						<label>Email: <input type="email" name="email" placeholder={contacts[0].email}></input></label>
+						<label>Email: <input type="email" name="email" placeholder={contact.email}></input></label>
 					</div>
 					<div>
-						<label>Phone: <input type="tel" name="phone" placeholder={contacts[0].phone}></input></label>
+						<label>Phone: <input type="tel" name="phone" placeholder={contact.phone}></input></label>
 					</div>
 					<div>
-						<label>Location: <input type="text" name="location" placeholder={contacts[0].location}></input></label>
+						<label>Location: <input type="text" name="location" placeholder={contact.location}></input></label>
 					</div>
 					<input type="hidden" name="img" value={this.state.preview}></input>
 					<h3>Drag and drop new image below:</h3>

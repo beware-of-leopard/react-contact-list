@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import SSF from 'react-simple-serial-form';
 import Dropzone from 'react-dropzone';
-import { hashHistory } from 'react-router';
+import { hashHistory, Link } from 'react-router';
 import contacts from './contacts';
 
 export default class AddContact extends Component{
@@ -50,7 +50,7 @@ export default class AddContact extends Component{
 			<div className="add-contact">
 				<div className="header">
 					<h1>Add new contact below:</h1>
-					<button onClick={this.props.returnTo}><i className="fa fa-arrow-left"></i>RETURN</button>
+					<Link to="/"><button><i className="fa fa-arrow-left"></i>RETURN</button></Link>
 				</div>
 				<SSF onData={::this.dataHandler} className="form">
 					<div>
