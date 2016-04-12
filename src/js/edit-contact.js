@@ -2,30 +2,33 @@ import React, {Component, PropTypes} from 'react';
 import SSF from 'react-simple-serial-form';
 import Dropzone from 'react-dropzone';
 import contacts from './contacts';
+import { Link, hashHistory } from 'react-router';
 
 export default class EditContact extends Component{
 
-	static propTypes = {
+	// static propTypes = {
 
-		editAndAdd: PropTypes.func.isRequired,
-		returnTo: PropTypes.func.isRequired,
+	// 	editAndAdd: PropTypes.func.isRequired,
+	// 	returnTo: PropTypes.func.isRequired,
 
-		contact: PropTypes.object.isRequired
+	// 	contact: PropTypes.object.isRequired
 
-	}
+	// }
 
 	constructor(props){
 
 		super(props);
 		this.state = {
-			preview: this.props.contact.img
+			// preview: this.props.contact.img
+			preview: ""
 		}
 	}
 
 	handler(updatedContact){
 
+		hashHistory.push('/');
+		// this.props.editAndAdd(this.props.contact, updatedContact);
 
-		this.props.editAndAdd(this.props.contact, updatedContact);
 
 
 	}
@@ -44,20 +47,20 @@ export default class EditContact extends Component{
 			<div className="add-contact">
 				<div className="header">
 					<h1>Edit contact below:</h1>
-					<button onClick={this.props.returnTo}><i className="fa fa-arrow-left"></i>RETURN</button>
+					<Link to="/"><button onClick={this.props.returnTo}><i className="fa fa-arrow-left"></i>RETURN</button></Link>
 				</div>
 				<SSF onData={::this.handler} className="form">
 					<div>
-						<label>Name: <input type="text" name="name" placeholder={this.props.contact.name}></input></label>
+						<label>Name: <input type="text" name="name" placeholder={contacts[0].name}></input></label>
 					</div>
 					<div>
-						<label>Email: <input type="email" name="email" placeholder={this.props.contact.email}></input></label>
+						<label>Email: <input type="email" name="email" placeholder={contacts[0].email}></input></label>
 					</div>
 					<div>
-						<label>Phone: <input type="tel" name="phone" placeholder={this.props.contact.phone}></input></label>
+						<label>Phone: <input type="tel" name="phone" placeholder={contacts[0].phone}></input></label>
 					</div>
 					<div>
-						<label>Location: <input type="text" name="location" placeholder={this.props.contact.location}></input></label>
+						<label>Location: <input type="text" name="location" placeholder={contacts[0].location}></input></label>
 					</div>
 					<input type="hidden" name="img" value={this.state.preview}></input>
 					<h3>Drag and drop new image below:</h3>

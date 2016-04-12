@@ -1,15 +1,17 @@
 import React, {Component, PropTypes} from 'react';
 import SSF from 'react-simple-serial-form';
 import Dropzone from 'react-dropzone';
+import { hashHistory } from 'react-router';
+import contacts from './contacts';
 
 export default class AddContact extends Component{
 
-	static propTypes = {
+	// static propTypes = {
 
-		addTo: PropTypes.func.isRequired,
-		returnTo: PropTypes.func.isRequired
+	// 	addTo: PropTypes.func.isRequired,
+	// 	returnTo: PropTypes.func.isRequired
 
-	}
+	// }
 
 	constructor(){
 
@@ -19,12 +21,17 @@ export default class AddContact extends Component{
 		}
 	}
 
-	handler(contact){
-		this.props.addTo(contact);
+	dataHandler(contact){
+		// this.props.addTo(contact);
 
+		contact.img = this.file.preview;
+		contacts.push(contact);
+
+		hashHistory.push('/');
 	}
 
 	dropHandler( [ file ]){
+		this.file = file;
 
 		// console.log(file);
 		this.setState({
@@ -45,7 +52,7 @@ export default class AddContact extends Component{
 					<h1>Add new contact below:</h1>
 					<button onClick={this.props.returnTo}><i className="fa fa-arrow-left"></i>RETURN</button>
 				</div>
-				<SSF onData={::this.handler} className="form">
+				<SSF onData={::this.dataHandler} className="form">
 					<div>
 						<label>Name: <input type="text" name="name"></input></label>
 					</div>
