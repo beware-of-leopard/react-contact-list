@@ -49,8 +49,8 @@ addNewHandler(){
 		    		<h3>Contact List</h3>
 		    		{contacts.map(
 		    			contact => 
-		    			<div className="contact-container">
-			    			<div onClick={::this.clickHandler.bind(this, contact)} key={ Math.random() }>
+		    			<div className="contact-container" key={ contact.name }>
+			    			<div onClick={::this.clickHandler.bind(this, contact)}>
 			    				{ <img src={contact.img} alt={contact.name} /> }<h2>{ contact.name }</h2>
 			    			</div>
 		    				<button className="edit-button" onClick={this.editClickHandler.bind(this, contact)}>Edit</button>
