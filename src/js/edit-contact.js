@@ -3,6 +3,7 @@ import SSF from 'react-simple-serial-form';
 import Dropzone from 'react-dropzone';
 import contacts from './contacts';
 import { Link, hashHistory } from 'react-router';
+import { editContact } from './contacts-actions'; 
 
 export default class EditContact extends Component{
 
@@ -26,11 +27,9 @@ export default class EditContact extends Component{
 
 	handler(updatedContact){
 
-		let contactToRemove = contacts.indexOf(contacts.find(user => user.name === this.props.params.name));
+		let contactToRemove = this.props.params.name;
 
-		contacts.splice(contactToRemove, 1);
-
-		contacts.push(updatedContact);
+		editContact(updatedContact, contactToRemove);
 
 		hashHistory.push('/');
 		// this.props.editAndAdd(this.props.contact, updatedContact);

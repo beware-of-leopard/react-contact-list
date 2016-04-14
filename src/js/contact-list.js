@@ -1,10 +1,13 @@
-import contacts from './contacts';
+// import contacts from './contacts';
 import React, {Component, PropTypes} from 'react';
 import ReactDOM from 'react-dom';
 import Contact from './contact';
 import EditContact from './edit-contact';
 import ContactName from './contact-name';
-import { hashHistory } from 'react-router'
+import { hashHistory } from 'react-router';
+import { ajax } from 'jquery';
+import ContactsStore from './contacts-store';
+import ContactsActions from './contacts-actions';
 // import {displayContactList, displaySingleContact} from './index';
 
 
@@ -17,6 +20,31 @@ export default class ContactList extends React.Component {
 // 	addNew: PropTypes.func.isRequired
 
 // }
+
+
+constructor(){
+
+		super();
+		this.state = {
+			preview: 'http://fillmurray.com/50/50',
+			contacts: ContactsStore.fetchContacts()		
+		}
+}
+
+componentWillMount(){
+
+	ContactsStore.on('change', () => {
+
+		this.setState({
+
+			contacts: ContactsStore.fetchContacts()
+
+		});
+
+	})
+
+}
+
 
 clickHandler(currentContact) {
     let contact = currentContact;
@@ -40,16 +68,22 @@ addNewHandler(){
 
 }
 
+// componentWillMount(){
 
-/////////////TEMPORARY SOLUTION: Math.random() is key in array.... CHANGE TOMORROW ////////////////////
+// 	ajax('http://10.0.0.24:8026/data').then(contacts =>{
+// 		this.setState({ contacts: contacts });
+// 	});
+
+// }
+
 
 	render() {
 		    return (
 		    	<div className="contact-list">
 		    		<h3>Contact List</h3>
-		    		{contacts.map(
+		    		{this.state.contacts.map(
 		    			contact => 
-		    			<div className="contact-container" key={ contact.name }>
+		    			<div className="contact-container" key={ `${contact.name}+${new Date}` }>
 			    			<div onClick={::this.clickHandler.bind(this, contact)}>
 			    				{ <img src={contact.img} alt={contact.name} /> }<h2>{ contact.name }</h2>
 			    			</div>

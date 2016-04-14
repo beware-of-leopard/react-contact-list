@@ -3,6 +3,7 @@ import SSF from 'react-simple-serial-form';
 import Dropzone from 'react-dropzone';
 import { hashHistory, Link } from 'react-router';
 import contacts from './contacts';
+import { addContact } from './contacts-actions';
 
 export default class AddContact extends Component{
 
@@ -25,7 +26,7 @@ export default class AddContact extends Component{
 		// this.props.addTo(contact);
 
 		contact.img = this.file.preview;
-		contacts.push(contact);
+		addContact(contact);
 
 		hashHistory.push('/');
 	}
